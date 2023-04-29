@@ -134,4 +134,6 @@ dist
 
 # gradle
 .gradle/
+/.gradle/
 .gradle/**
+/.gradle/**

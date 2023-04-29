@@ -46656,7 +46656,8 @@ Please use another name.` : formatMuiErrorMessage(18));
 
   // src/resources/routes-constants.ts
   var ROUTES = {
-    HOMEPAGE_ROUTE: "/"
+    HOMEPAGE_ROUTE: "/",
+    GITHUB_PAGES_ROUTE: "tl-esa-tools/"
   };
 
   // src/pages/NotFoundPage.tsx
@@ -46664,9 +46665,21 @@ Please use another name.` : formatMuiErrorMessage(18));
   var NotFoundPage = () => {
     const navigate = useNavigate();
     const redirectToHomePage = () => {
-      navigate(ROUTES.HOMEPAGE_ROUTE);
+      const url = new URL(window.location.href);
+      if (url.host.indexOf("github.io") > 0) {
+        navigate(ROUTES.GITHUB_PAGES_ROUTE);
+      } else {
+        navigate(ROUTES.HOMEPAGE_ROUTE);
+      }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { style: { position: "relative", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { style: {
+      position: "relative",
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column"
+    }, children: [
       /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("h1", { style: { fontSize: "4em" }, children: "Oops 404!" }),
       /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("span", { style: { cursor: "pointer" }, onClick: () => redirectToHomePage(), children: "Homepage" })
     ] });
@@ -46678,7 +46691,8 @@ Please use another name.` : formatMuiErrorMessage(18));
   var RootComponent = () => {
     return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(BrowserRouter, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(Routes, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Route, { path: "*", element: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(NotFoundPage_default, {}) }),
-      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Route, { path: ROUTES.HOMEPAGE_ROUTE, element: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(HomePage_default, {}) })
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Route, { path: ROUTES.HOMEPAGE_ROUTE, element: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(HomePage_default, {}) }),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Route, { path: ROUTES.GITHUB_PAGES_ROUTE, element: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(HomePage_default, {}) })
     ] }) });
   };
   var RootComponent_default = RootComponent;

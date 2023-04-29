@@ -1,0 +1,30 @@
+gradle.startParameter.showStacktrace = ShowStacktrace.ALWAYS
+
+buildscript {
+    ext {
+        gradleNodePluginVersion = '3.5.1'
+    }
+
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath "com.github.node-gradle:gradle-node-plugin:${gradleNodePluginVersion}"
+    }
+}
+
+subprojects {
+    if (it.name == 'survey') {
+        apply plugin: 'java'
+        apply plugin: 'com.github.node-gradle.node'
+    }
+
+    group = 'me.bvn13.tl-esa-tools'
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+}

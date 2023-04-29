@@ -1,0 +1,93 @@
+// https://dzone.com/articles/integrating-java-and-npm-builds-using-gradle
+// https://github.com/node-gradle/gradle-node-plugin/blob/master/examples/vertx-react/build.gradle
+plugins {
+    id "base"
+    // You have to specify the plugin version, for instance
+    // id "com.github.node-gradle.node" version "3.0.0"
+    // This works as is here because we use the plugin source
+    id "com.github.node-gradle.node"
+}
+
+// https://github.com/node-gradle/gradle-node-plugin/blob/master/examples/simple-node/npm/build.gradle
+node {
+    /* gradle-node-plugin configuration
+       https://github.com/srs/gradle-node-plugin/blob/master/docs/node.md
+
+       Task name pattern:
+       ./gradlew npm_<command> Executes an NPM command.
+    */
+
+    // Version of node to use.
+    version = '18.12.1'
+
+    // Version of npm to use.
+    npmVersion = '8.1.4'
+
+    // Version of Yarn
+    yarnVersion = '1.22.19'
+
+    // If true, it will download node using above parameters.
+    // If false, it will try to use globally installed node.
+    download = true
+}
+
+def yarn = tasks.named("yarn")
+
+def copyTask = tasks.register("copyPublic", Copy) {
+    dependsOn(yarn)
+    mustRunAfter(yarn)
+    from "public"
+    into "${buildDir}/../../site"
+    println("copied")
+}
+
+def rewriteContent = tasks.register("rewriteFileContent") {
+    dependsOn(copyTask)
+    mustRunAfter(copyTask)
+    inputs.dir("public")
+    doLast {
+        def publicPath = ""
+        def path = "${buildDir}/../../site"
+
+        ant.replaceregexp(match: '%PUBLIC_URL%', replace: publicPath, flags: 'g', byline: true) {
+            fileset(dir: path, includes: 'index.html,manifest.json')
+        }
+        println("rewritten")
+    }
+}
+
+// https://www.metachris.com/2021/04/starting-a-typescript-project-in-2021/
+def buildTask = tasks.register("buildWebapp", NpxTask) {
+    command = "esbuild"
+    args = ["src/index.tsx", "--bundle", "--sourcemap", "--outfile=${buildDir}/../../site/app/index.js"]
+    dependsOn(rewriteContent)
+    mustRunAfter(rewriteContent)
+    inputs.dir(fileTree("src").exclude("**/*.test.js").exclude("**/*.spec.js").exclude("**/__tests__/**/*.js"))
+    inputs.dir("node_modules")
+    inputs.dir("public")
+    outputs.dir("${buildDir}/../../site")
+    environment = ["BUILD_PATH": "${buildDir}/../../site"]
+    println("built")
+}
+
+def testTask = tasks.register("testWebapp", NpxTask) {
+    command = "react-scripts"
+    args = ["test"]
+    dependsOn(yarn)
+    inputs.dir("node_modules")
+    inputs.dir("src")
+    inputs.dir("public")
+    outputs.upToDateWhen { true }
+    environment = ['CI': 'true']
+}
+
+sourceSets {
+    java {
+        main {
+            resources {
+                // This makes the processResources task automatically depend on the buildWebapp one
+                srcDir(buildTask)
+            }
+        }
+    }
+}

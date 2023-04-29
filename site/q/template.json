@@ -1,0 +1,20 @@
+{
+  "title": "",
+  "intro": "",
+  "settings": {
+    "randomizeQuestions": false,
+    "randomizeOptions": false
+  },
+  "questions": [
+    {
+      "group" : "",
+      "question": "",
+      "options": [
+        {
+          "option": "",
+          "value": 0
+        }
+      ]
+    }
+  ]
+}

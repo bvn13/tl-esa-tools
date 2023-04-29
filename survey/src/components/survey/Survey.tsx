@@ -1,7 +1,7 @@
 import './Survey.css'
 import * as React from "react";
 import {useEffect} from "react";
-import {SurveyDto} from "./../../api/Api";
+import {SurveyDto} from "../../api/Api";
 import {Box, Button, Paper, Step, StepContent, StepLabel, Stepper, Typography} from "@mui/material";
 import {store} from "../../store/store";
 import {setContents, addAnswer} from "../../store/actions/data";

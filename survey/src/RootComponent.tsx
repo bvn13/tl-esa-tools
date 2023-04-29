@@ -11,6 +11,7 @@ const RootComponent: React.FC = () => {
             <Routes>
                 <Route path="*" element={<NotFoundPage />} />
                 <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} />
+                <Route path={ROUTES.GITHUB_PAGES_ROUTE} element={<HomePage />} />
             </Routes>
         </Router>
     )

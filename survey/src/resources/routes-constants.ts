@@ -1,3 +1,4 @@
 export const ROUTES = {
-    HOMEPAGE_ROUTE: '/'
+    HOMEPAGE_ROUTE: '/',
+    GITHUB_PAGES_ROUTE: 'tl-esa-tools/'
 }

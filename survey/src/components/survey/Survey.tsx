@@ -1,27 +1,43 @@
 import './Survey.css'
 import * as React from "react";
+import {useEffect} from "react";
 import {SurveyDto} from "./../../api/Api";
 import {Box, Button, Paper, Step, StepContent, StepLabel, Stepper, Typography} from "@mui/material";
+import {store} from "../../store/store";
+import {setContents, addAnswer} from "../../store/actions/data";
+import {ResultByGroup} from "../../store/initialState";
 
 interface Props {
     survey: SurveyDto | undefined
 }
 
 const Survey: React.FC<Props> = ({survey}) => {
-    const [activeStep, setActiveStep] = React.useState(-1);
+    const [activeStep, setActiveStep] = React.useState(-1)
+    const [results, setResults] = React.useState(store.getState())
 
     const handleNext = (group: string | undefined, value: number | undefined) => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        if (group !== undefined && value !== undefined) {
+            store.dispatch(addAnswer({
+                group: group,
+                value: value
+            }))
+        }
+        setActiveStep((prevActiveStep) => prevActiveStep + 1)
     };
 
     const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+        setActiveStep((prevActiveStep) => prevActiveStep - 1)
     };
 
     const handleReset = () => {
-        setActiveStep(-1);
+        store.dispatch(setContents([] as ResultByGroup[]))
+        setActiveStep(-1)
     };
 
+    useEffect(() => {
+        store.dispatch(setContents([] as ResultByGroup[]))
+        return store.subscribe(() => setResults(store.getState()))
+    }, [])
 
     const prepare = (text: string | undefined) => {
         if (text !== undefined) {
@@ -52,7 +68,7 @@ const Survey: React.FC<Props> = ({survey}) => {
             <Box sx={{maxWidth: 400}}>
                 <Stepper activeStep={activeStep} orientation={"vertical"}>
                     {survey?.questions.map((question, index) =>
-                        <Step key={question.question}>
+                        <Step key={prepare(question.title)}>
                             <StepLabel optional={
                                 index === survey?.questions.length - 1 ? (
                                     <Typography variant="caption">Last step</Typography>
@@ -66,7 +82,7 @@ const Survey: React.FC<Props> = ({survey}) => {
                                 <Box sx={{mb: 2}}>
                                     <div>
                                         {question.options.map((option, index) =>
-                                            <div>
+                                            <div key={question.group + '/' + question.title + '/' + option.value}>
                                                 <Button
                                                     variant="contained"
                                                     onClick={() => handleNext(question.group, option.value)}
@@ -86,6 +102,17 @@ const Survey: React.FC<Props> = ({survey}) => {
                 {activeStep === survey?.questions.length && (
                     <Paper square elevation={0} sx={{p: 3}}>
                         <Typography>All steps completed - you&apos;re finished</Typography>
+                        <div>
+                            <ul>
+                                {results.data.resultsByGroup?.map((result, index) =>
+                                    <li key={result.group}>
+                                        <span>{result.group}</span>
+                                        <span>: </span>
+                                        <span>{result.value}</span>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
                         <Button onClick={handleReset} sx={{mt: 1, mr: 1}}>
                             Reset
                         </Button>

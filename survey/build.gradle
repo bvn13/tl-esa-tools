@@ -37,7 +37,7 @@ def copyTask = tasks.register("copyPublic", Copy) {
     dependsOn(yarn)
     mustRunAfter(yarn)
     from "public"
-    into "${buildDir}/../../site"
+    into "${buildDir}/../../docs"
     println("copied")
 }
 
@@ -47,7 +47,7 @@ def rewriteContent = tasks.register("rewriteFileContent") {
     inputs.dir("public")
     doLast {
         def publicPath = ""
-        def path = "${buildDir}/../../site"
+        def path = "${buildDir}/../../docs"
 
         ant.replaceregexp(match: '%PUBLIC_URL%', replace: publicPath, flags: 'g', byline: true) {
             fileset(dir: path, includes: 'index.html,manifest.json')
@@ -59,14 +59,14 @@ def rewriteContent = tasks.register("rewriteFileContent") {
 // https://www.metachris.com/2021/04/starting-a-typescript-project-in-2021/
 def buildTask = tasks.register("buildWebapp", NpxTask) {
     command = "esbuild"
-    args = ["src/index.tsx", "--bundle", "--sourcemap", "--outfile=${buildDir}/../../site/app/index.js"]
+    args = ["src/index.tsx", "--bundle", "--sourcemap", "--outfile=${buildDir}/../../docs/app/index.js"]
     dependsOn(rewriteContent)
     mustRunAfter(rewriteContent)
     inputs.dir(fileTree("src").exclude("**/*.test.js").exclude("**/*.spec.js").exclude("**/__tests__/**/*.js"))
     inputs.dir("node_modules")
     inputs.dir("public")
-    outputs.dir("${buildDir}/../../site")
-    environment = ["BUILD_PATH": "${buildDir}/../../site"]
+    outputs.dir("${buildDir}/../../docs")
+    environment = ["BUILD_PATH": "${buildDir}/../../docs"]
     println("built")
 }
 

@@ -46539,9 +46539,10 @@ Please use another name.` : formatMuiErrorMessage(18));
   // src/components/survey/Survey.tsx
   var import_jsx_runtime27 = __toESM(require_jsx_runtime());
   var Survey = ({ survey }) => {
-    var _a;
+    var _a, _b, _c;
     const [activeStep, setActiveStep] = React40.useState(-1);
     const [results, setResults] = React40.useState(store.getState());
+    const [preparedSurvey, setPreparedSurvey] = React40.useState({});
     const handleNext = (group, value) => {
       if (group !== void 0 && value !== void 0) {
         store.dispatch(addAnswer({
@@ -46558,10 +46559,34 @@ Please use another name.` : formatMuiErrorMessage(18));
       store.dispatch(setContents([]));
       setActiveStep(-1);
     };
+    const randomizeIfNeeded = (isNeeded, array) => {
+      if (isNeeded) {
+        return array.sort((a3, b3) => 0.5 - Math.random());
+      } else {
+        return array;
+      }
+    };
     (0, import_react21.useEffect)(() => {
       store.dispatch(setContents([]));
       return store.subscribe(() => setResults(store.getState()));
     }, []);
+    (0, import_react21.useEffect)(() => {
+      if (void 0 !== survey) {
+        setPreparedSurvey({
+          title: survey.title,
+          settings: survey.settings,
+          intro: survey.intro,
+          questions: randomizeIfNeeded(survey.settings.randomizeQuestions, survey.questions).map((q2) => {
+            return {
+              group: q2.group,
+              title: q2.title,
+              question: q2.question,
+              options: randomizeIfNeeded(survey.settings.randomizeOptions, q2.options)
+            };
+          })
+        });
+      }
+    }, [survey]);
     const prepare2 = (text) => {
       if (text !== void 0) {
         return text.replaceAll("\n", "<br/>").replaceAll("<script", "script");
@@ -46570,8 +46595,8 @@ Please use another name.` : formatMuiErrorMessage(18));
       }
     };
     return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h1", { style: { fontSize: "4em" }, children: survey == null ? void 0 : survey.title }),
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { dangerouslySetInnerHTML: { __html: prepare2(survey == null ? void 0 : survey.intro) } }),
+      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h1", { style: { fontSize: "4em" }, children: preparedSurvey == null ? void 0 : preparedSurvey.title }),
+      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { dangerouslySetInnerHTML: { __html: prepare2(preparedSurvey == null ? void 0 : preparedSurvey.intro) } }),
       /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("br", {}),
       /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Box_default, { sx: { maxWidth: 400 }, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
         Button_default,
@@ -46585,9 +46610,9 @@ Please use another name.` : formatMuiErrorMessage(18));
       ) }),
       /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("br", {}),
       /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(Box_default, { sx: { maxWidth: 400 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Stepper_default, { activeStep, orientation: "vertical", children: survey == null ? void 0 : survey.questions.map(
+        /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Stepper_default, { activeStep, orientation: "vertical", children: (_a = preparedSurvey == null ? void 0 : preparedSurvey.questions) == null ? void 0 : _a.map(
           (question, index) => /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(Step_default, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StepLabel_default, { optional: index === (survey == null ? void 0 : survey.questions.length) - 1 ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Typography_default, { variant: "caption", children: "Last step" }) : null, children: "Question " + (index + 1) }),
+            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(StepLabel_default, { optional: index === (preparedSurvey == null ? void 0 : preparedSurvey.questions.length) - 1 ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Typography_default, { variant: "caption", children: "Last step" }) : null, children: "Question " + (index + 1) }),
             /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(StepContent_default, { children: [
               /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("h4", { children: question.title }),
               /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Typography_default, { children: question.question }),
@@ -46608,9 +46633,9 @@ Please use another name.` : formatMuiErrorMessage(18));
             ] })
           ] }, prepare2(question.title))
         ) }),
-        activeStep === (survey == null ? void 0 : survey.questions.length) && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(Paper_default, { square: true, elevation: 0, sx: { p: 3 }, children: [
+        activeStep === ((_b = preparedSurvey == null ? void 0 : preparedSurvey.questions) == null ? void 0 : _b.length) && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(Paper_default, { square: true, elevation: 0, sx: { p: 3 }, children: [
           /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Typography_default, { children: "All steps completed - you're finished" }),
-          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("ul", { children: (_a = results.data.resultsByGroup) == null ? void 0 : _a.map(
+          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("ul", { children: (_c = results.data.resultsByGroup) == null ? void 0 : _c.map(
             (result, index) => /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("li", { children: [
               /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { children: result.group }),
               /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { children: ": " }),

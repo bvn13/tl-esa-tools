@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {SurveyDto} from "../../api/Api";
 import {Box, Button, Paper, Step, StepContent, StepLabel, Stepper, Typography} from "@mui/material";
 import {store} from "../../store/store";
-import {setContents, addAnswer} from "../../store/actions/data";
+import {addAnswer, setContents} from "../../store/actions/data";
 import {ResultByGroup} from "../../store/initialState";
 
 interface Props {
@@ -14,6 +14,7 @@ interface Props {
 const Survey: React.FC<Props> = ({survey}) => {
     const [activeStep, setActiveStep] = React.useState(-1)
     const [results, setResults] = React.useState(store.getState())
+    const [preparedSurvey, setPreparedSurvey] = React.useState({} as SurveyDto)
 
     const handleNext = (group: string | undefined, value: number | undefined) => {
         if (group !== undefined && value !== undefined) {
@@ -34,10 +35,36 @@ const Survey: React.FC<Props> = ({survey}) => {
         setActiveStep(-1)
     };
 
+    const randomizeIfNeeded = (isNeeded: boolean, array: any[]) => {
+        if (isNeeded) {
+            return array.sort((a, b) => 0.5 - Math.random())
+        } else {
+            return array
+        }
+    }
+
     useEffect(() => {
         store.dispatch(setContents([] as ResultByGroup[]))
         return store.subscribe(() => setResults(store.getState()))
     }, [])
+
+    useEffect(() => {
+        if (undefined !== survey) {
+            setPreparedSurvey({
+                title: survey.title,
+                settings: survey.settings,
+                intro: survey.intro,
+                questions: randomizeIfNeeded(survey.settings.randomizeQuestions, survey.questions).map(q => {
+                    return {
+                        group: q.group,
+                        title: q.title,
+                        question: q.question,
+                        options: randomizeIfNeeded(survey.settings.randomizeOptions, q.options)
+                    }
+                })
+            })
+        }
+    }, [survey])
 
     const prepare = (text: string | undefined) => {
         if (text !== undefined) {
@@ -51,8 +78,8 @@ const Survey: React.FC<Props> = ({survey}) => {
 
     return (
         <div>
-            <h1 style={{fontSize: '4em'}}>{survey?.title}</h1>
-            <div dangerouslySetInnerHTML={{__html: prepare(survey?.intro)}}></div>
+            <h1 style={{fontSize: '4em'}}>{preparedSurvey?.title}</h1>
+            <div dangerouslySetInnerHTML={{__html: prepare(preparedSurvey?.intro)}}></div>
             <br/>
             <Box sx={{maxWidth: 400}}>
                 <Button
@@ -67,10 +94,10 @@ const Survey: React.FC<Props> = ({survey}) => {
             <br/>
             <Box sx={{maxWidth: 400}}>
                 <Stepper activeStep={activeStep} orientation={"vertical"}>
-                    {survey?.questions.map((question, index) =>
+                    {preparedSurvey?.questions?.map((question, index) =>
                         <Step key={prepare(question.title)}>
                             <StepLabel optional={
-                                index === survey?.questions.length - 1 ? (
+                                index === preparedSurvey?.questions.length - 1 ? (
                                     <Typography variant="caption">Last step</Typography>
                                 ) : null
                             }>
@@ -99,7 +126,7 @@ const Survey: React.FC<Props> = ({survey}) => {
                         </Step>
                     )}
                 </Stepper>
-                {activeStep === survey?.questions.length && (
+                {activeStep === preparedSurvey?.questions?.length && (
                     <Paper square elevation={0} sx={{p: 3}}>
                         <Typography>All steps completed - you&apos;re finished</Typography>
                         <div>

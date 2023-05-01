@@ -2,8 +2,8 @@
   "title": "АGILE-КОМПАС",
   "intro": "Agile-компас (с) Keterina Lengold\n\nВ этом тесте 15 вопросов, которые помогут определить оптимальную комбинацию целей на спринт по сферам и уровням.\n\nВаша задача — вспомнить, как часто за последний месяц вы испытывали то, что указано в каждом вопросе.\n\nЭтот тест рекомендуется проходить каждый спринт перед постановкой целей.",
   "settings": {
-    "randomizeQuestions": false,
-    "randomizeOptions": false
+    "randomizeQuestions": true,
+    "randomizeOptions": true
   },
   "questions": [
     {

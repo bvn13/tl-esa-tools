@@ -1,10 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit'
 import {addAnswer, setContents} from '../actions/data'
 import initialState, {StoreContent, ResultByGroup} from "../initialState";
-import * as _ from "lodash";
+import * as _ from "lodash-es";
 
 const reduceState = (array: ResultByGroup[], addon: ResultByGroup) => {
-    var added = false;
+    let added = false;
     array.forEach((result) => {
         if (result.group === addon.group) {
             added = true

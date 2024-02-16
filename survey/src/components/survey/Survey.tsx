@@ -6,6 +6,7 @@ import {Box, Button, Paper, Step, StepContent, StepLabel, Stepper, Typography} f
 import {store} from "../../store/store";
 import {addAnswer, setContents} from "../../store/actions/data";
 import {ResultByGroup} from "../../store/initialState";
+import If from "../utils/If";
 
 interface Props {
     survey: SurveyDto | undefined
@@ -61,7 +62,8 @@ const Survey: React.FC<Props> = ({survey}) => {
                         question: q.question,
                         options: randomizeIfNeeded(survey.settings.randomizeOptions, q.options)
                     }
-                })
+                }),
+                resultsInfo: survey.resultsInfo
             })
         }
     }, [survey])
@@ -140,6 +142,7 @@ const Survey: React.FC<Props> = ({survey}) => {
                                 )}
                             </ul>
                         </div>
+                        <div dangerouslySetInnerHTML={{__html: prepare(preparedSurvey?.resultsInfo)}}></div>
                         <Button onClick={handleReset} sx={{mt: 1, mr: 1}}>
                             Reset
                         </Button>

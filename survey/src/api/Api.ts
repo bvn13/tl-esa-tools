@@ -20,7 +20,8 @@ export interface SurveyDto {
     title: string,
     intro: string,
     settings: SettingsDto,
-    questions: QuestionDto[]
+    questions: QuestionDto[],
+    resultsInfo: string
 }
 
 const Api = {

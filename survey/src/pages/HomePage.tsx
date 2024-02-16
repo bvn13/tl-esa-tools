@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react'
-import DateDisplay from '../components/DateDisplay'
 import {SnackbarOrigin, useSnackbar} from 'notistack';
 import Api, {SurveyDto} from "./../api/Api";
 import Survey from "./../components/survey/Survey";

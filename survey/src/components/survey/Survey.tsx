@@ -62,7 +62,8 @@ const Survey: React.FC<Props> = ({survey}) => {
                         question: q.question,
                         options: randomizeIfNeeded(survey.settings.randomizeOptions, q.options)
                     }
-                })
+                }),
+                resultsInfo: survey.resultsInfo
             })
         }
     }, [survey])

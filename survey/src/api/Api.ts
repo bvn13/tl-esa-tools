@@ -21,7 +21,7 @@ export interface SurveyDto {
     intro: string,
     settings: SettingsDto,
     questions: QuestionDto[],
-    resultsInfo?: string
+    resultsInfo: string
 }
 
 const Api = {

@@ -1,0 +1,551 @@
+{
+  "title": "Тест личности по D.I.S.C.",
+  "intro": "В тесте 20 вопросов. Отвечайте честно на каждый из них.",
+  "settings": {
+    "randomizeQuestions": true,
+    "randomizeOptions": true
+  },
+  "questions": [
+    {
+      "group": "D - dominance - Доминирующие",
+      "title": "Я напорист, требователен и решителен.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "group": "D - dominance - Доминирующие",
+      "title": "Мне нравится выполнять несколько задач одновременно.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "D - dominance - Доминирующие",
+      "title": "Я преуспеваю в среде, основанной на вызовах.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "D - dominance - Доминирующие",
+      "title": "Я думаю о задачах, стоящих выше других или меня самого.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "D - dominance - Доминирующие",
+      "title": "Меня мотивируют достижения и авторитет.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "I - influence - Влияющие",
+      "title": "Мне нравится оказывать влияние на людей и вдохновлять их.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "I - influence - Влияющие",
+      "title": "Я с оптимизмом смотрю на других.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "I - influence - Влияющие",
+      "title": "Я стремлюсь быть душой вечеринки.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "I - influence - Влияющие",
+      "title": "Я думаю о мотивации людей.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "I - influence - Влияющие",
+      "title": "Я мотивирован признанием и одобрением.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "S - steadiness - Постоянные",
+      "title": "Я преуспеваю в стабильной среде, а не в меняющейся.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "S - steadiness - Постоянные",
+      "title": "Я предпочитаю конкретику обобщениям.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "S - steadiness - Постоянные",
+      "title": "Мне нравятся небольшие группы людей.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "S - steadiness - Постоянные",
+      "title": "Я предпочитаю быть членом команды, а не руководить ею.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "S - steadiness - Постоянные",
+      "title": "Меня мотивируют стабильность и поддержка.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "C - complience - Соответствующие",
+      "title": "Обычно я не иду на большой риск.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "C - complience - Соответствующие",
+      "title": "Я люблю задачи, порядок и детали.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "C - complience - Соответствующие",
+      "title": "Большую часть времени я бываю прав.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "C - complience - Соответствующие",
+      "title": "Я соблюдаю четко определенные правила.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    },
+     {
+      "group" : "C - complience - Соответствующие",
+      "title": "Меня мотивируют качество и корректность.",
+      "question": "Для меня это характерно?",
+      "options": [
+        {
+          "option": "Никогда",
+          "value": 1
+        },
+        {
+          "option": "Редко",
+          "value": 2
+        },
+        {
+          "option": "Иногда",
+          "value": 3
+        },
+        {
+          "option": "Часто",
+          "value": 4
+        },
+        {
+          "option": "Всегда",
+          "value": 5
+        }
+      ]
+    }
+  ],
+  "resultsInfo": "Важны категории, набравшие наибольшее количество баллов (обычно их две). Они определяют ваш тип личности.<br/><br/>За расшифровкой можно обратиться к профильным статьям, например, <a href=\"https://vc.ru/life/620820-kak-nayti-podhod-k-cheloveku-v-pervye-minuty-obshcheniya-primeryaem-model-disc-v-rabochih-keysah#hogwartsexpress\">этой</a>"
+}

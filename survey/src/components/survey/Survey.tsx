@@ -6,7 +6,6 @@ import {Box, Button, Paper, Step, StepContent, StepLabel, Stepper, Typography} f
 import {store} from "../../store/store";
 import {addAnswer, setContents} from "../../store/actions/data";
 import {ResultByGroup} from "../../store/initialState";
-import If from "../utils/If";
 
 interface Props {
     survey: SurveyDto | undefined
